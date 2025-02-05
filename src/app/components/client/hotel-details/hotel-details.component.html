@@ -1,0 +1,26 @@
+<div class="hotel-details">
+    <div class="bookings">
+        <h2>Bookings</h2>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+     @if(room_details){
+        <div  class="room">
+            <h1>{{room_details.room_name|titlecase}}</h1>
+            <div>
+                <img src="{{room_details.room_image}}" alt="" srcset="">
+            </div>
+            <h3>{{room_details.room_type|titlecase}}</h3>
+            <h4>Price : {{room_details.price|currency}} per night</h4>
+            <p><b>Description</b> : {{room_details.description|titlecase}}</p>
+            <p><b>Amenities</b> : {{room_details.amenities|titlecase}}</p>
+            <p><b>Available no. of rooms</b> : {{room_details.available_rooms}}</p>
+            <button class="btnBookNow" (click)="gotoBookRoom()">Book Now</button>
+        </div>
+     }
+
+</div>

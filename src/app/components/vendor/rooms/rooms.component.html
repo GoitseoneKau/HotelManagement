@@ -1,0 +1,205 @@
+<div class="rooms">
+    <h1>rooms</h1>
+    <div class="addRoom-header"><p>Are you expanding?</p><button (click)="showRoomPop()" class="btnAddRoom" type="button">Add New Room</button></div>
+    <div class="listings">
+        <hotel-card *ngFor="let room of rooms" [data]="room" />
+    </div>
+    <dialog draggable="true" #addRoomDialog >
+        <div class="addRoomDialog">
+            <button class="btnCloseDialog" (click)="closePop()"><i class="fa-solid fa-circle-xmark"></i></button>
+            <h2>Add Room</h2>
+            <form  #myForm="ngForm"  (ngSubmit)="onSubmit(myForm)" method="dialog">
+                <div class="form-group">
+                    <label for="room_name">room_name :
+                        <input type="text" id="room_name" name="room_name"
+                        [class.holderError]="room_name.touched  && room_name.invalid"
+                        [class.ng-invalid]="room_name.touched && room_name.invalid"
+                        pattern="(([A-Za-z])*(\s?))*"  
+                        ngModel 
+                        #room_name="ngModel"  
+                        placeholder="Luxury Romantic Suite" required room_name>
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':room_name.invalid && (room_name.dirty || room_name.touched)}" 
+                    >
+                        <p *ngIf="room_name.invalid && (room_name.dirty || room_name.touched) && room_name.hasError('required')" >
+                            room_name is required
+                        </p>
+                        <p *ngIf=" room_name.hasError('pattern')" >
+                            only valid room_name can be entered
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="room_type">room_type :
+                        <select title="room_type" name="room_type"
+                        [class.holderError]="amenities.touched && amenities.hasError('required')"
+                        [class.ng-invalid]="amenities.touched && amenities.hasError('required')"
+                         ngModel 
+                        #room_type="ngModel"   required>
+                            <option value="luxury" >Luxury</option>
+                            <option value="penthouse">penthouse</option>
+                            <option value="executive">executive</option>
+                            <option value="lodge">lodge</option>
+                            <option value="villa">villa</option>
+                            <option value="doubleroom">doubleroom</option>
+                            <option value="standardroom">standardroom</option>
+                        </select>
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':room_type.invalid && (room_type.dirty || room_type.touched)}" 
+                    >
+                        <p *ngIf="room_type.invalid && (room_type.dirty || room_type.touched) && room_type.hasError('required')" >
+                            room-type is required
+                        </p>
+                      
+                    </div>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label for="price">price :
+                        <input type="number" id="price" name="price"
+                        [class.holderError]="price.touched && price.invalid"
+                        [class.ng-invalid]="price.touched && price.invalid"
+                         
+                        step="0.01"
+                        min="100"
+                        ngModel 
+                        #price="ngModel"  
+                        placeholder="1000.00" required price>
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':price.invalid && (price.dirty || price.touched)}" 
+                    >
+                        <p *ngIf="price.invalid && (price.dirty || price.touched) && price.hasError('required')" >
+                            price is required
+                        </p>
+                        <p *ngIf=" price.hasError('min')" >
+                            Minimum is 100
+                        </p>
+                    </div>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label for="amenities">amenities :
+                        <input type="text" id="amenities" name="amenities"
+                        [class.holderError]="amenities.touched && amenities.invalid"
+                        [class.ng-invalid]="amenities.touched && amenities.invalid"
+                  
+                        ngModel 
+                        #amenities="ngModel"  
+                        placeholder="TV,Fridge" required amenities>
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':amenities.invalid && (amenities.dirty || amenities.touched)}" 
+                    >
+                        <p *ngIf="amenities.invalid && (amenities.dirty || amenities.touched) && amenities.hasError('required')" >
+                            amenities is required
+                        </p>
+                        
+                    </div>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label for="image">Room Image :
+                        <input type="file" id="image" name="room_image"
+                        [class.holderError]=" room_image.touched &&  room_image.invalid"
+                        [class.ng-invalid]=" room_image.touched &&  room_image.invalid"
+                        (change)="imageHandler($event)"
+                        ngModel 
+                        #room_image="ngModel"  
+                         required accept="image/*" file>
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible': room_image.invalid && ( room_image.dirty ||  room_image.touched)}" 
+                    >
+                        <p *ngIf=" room_image.invalid && ( room_image.dirty ||  room_image.touched) &&  room_image.hasError('required')" >
+                            image is required
+                        </p>
+                
+                    </div>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label for="description">description :
+                        <input type="text" id="description" name="description"
+                        [class.holderError]="description.touched && description.invalid"
+                        [class.ng-invalid]="description.touched && description.invalid"
+                        
+                        ngModel 
+                        #description="ngModel"  
+                        placeholder="Perfect for new romantic couples and with a view of the sea and sunsets" required >
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':description.invalid && (description.dirty || description.touched)}" 
+                    >
+                        <p *ngIf="description.invalid && (description.dirty || description.touched) && description.hasError('required')" >
+                            description is required
+                        </p>
+                        <p *ngIf=" description.hasError('pattern')" >
+                            only valid description can be entered
+                        </p>
+                    </div>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label for="numberOfRooms">No. of Rooms :
+                        <input type="number" id="numberOfRooms" name="numberOfRooms"
+                        [class.holderError]="numberOfRooms.touched && numberOfRooms.invalid"
+                        [class.ng-invalid]="numberOfRooms.touched && numberOfRooms.invalid"
+                        min="1"
+                        max="20"
+                        value="1"
+                        ngModel 
+                        #numberOfRooms="ngModel"  
+                        placeholder="1" required >
+                    </label>
+                   
+                   
+                    <div class="alert" 
+                        ngClass="{'visible':numberOfRooms.invalid && (numberOfRooms.dirty || numberOfRooms.touched)}" 
+                    >
+                        <p *ngIf="numberOfRooms.invalid && (numberOfRooms.dirty || numberOfRooms.touched) && numberOfRooms.hasError('required')" >
+                            numberOfRooms is required
+                        </p>
+                        <p *ngIf=" numberOfRooms.hasError('pattern')" >
+                            only valid numberOfRooms can be entered
+                        </p>
+                    </div>
+                </div>
+    
+              
+    
+    
+    
+               
+            
+                
+                
+                <div class="btnSubmit">
+                    <input [disabled]="!myForm.control.valid"  type="submit" id="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        
+      </dialog>
+      
+</div>

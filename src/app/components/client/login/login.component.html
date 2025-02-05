@@ -1,0 +1,62 @@
+<div class="login-form">
+   <div>
+    <div class="pic"></div>
+    <div class="form">
+        <h2>Login to book</h2>
+        <form #myForm="ngForm"  (ngSubmit)="onSubmit(myForm)"  >
+            
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email"
+                [class.holderError]="email.touched"
+                [class.ng-invalid]="email.touched"
+             
+                ngModel 
+                #email="ngModel"  
+                placeholder="example@domain.com" required email>
+               
+            </div>
+            @if(email.invalid && (email.dirty || email.touched)){
+                <div class="alert">
+                    <p *ngIf="email.hasError('required')" >
+                        email is required
+                    </p>
+                    <p *ngIf="email.hasError('email')" >
+                        only valid email can be entered
+                    </p>
+                </div>
+            }
+
+            <div class="form-group"> 
+                <label for="password">Password :</label>
+                <input type="password" id="password" name="password"  
+                [class.holderError]="password.touched"  
+                [class.ng-invalid]="password.touched"
+                ngModel minlength="3"
+                #password="ngModel" placeholder="Password"  required>
+                
+            </div>
+            @if(password.invalid && (password.dirty || password.touched)){
+                <div class="alert">
+                    <p *ngIf="password.hasError('required')" >
+                        Password is required.
+                    </p>
+                    <p *ngIf="password.hasError('minlength')" >
+                        Password must be atleast 3 characters long or more.
+                    </p>
+                </div>
+            }
+            <div class="btnSubmit">
+                <input [disabled]="!myForm.control.valid"  type="submit" id="submit" value="Submit">
+            </div>
+            <br>
+            <p>or</p>
+            <div>
+                login with google
+            </div>
+            
+        </form>
+    </div>
+   </div>
+    
+</div>

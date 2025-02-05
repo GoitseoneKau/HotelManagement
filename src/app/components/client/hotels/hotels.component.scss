@@ -1,0 +1,16 @@
+.hotel-list{
+    display: flex;
+    padding: 10px 15px;
+    height: 100%;
+}
+
+.type-filter{
+    width:30%;
+}
+
+.hotel-rooms{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1em;
+    width: 100%;
+}

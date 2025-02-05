@@ -1,0 +1,13 @@
+<div class="card">
+ <div class="card-header">
+    <h2 class="title">{{data()?.room_name|titlecase}}</h2>
+    <img src="{{data()?.room_image}}"  alt="" srcset="">
+ </div>
+<div class="card-content">
+    <p class="price">Price : {{data()?.price|currency}}</p>
+    <p class="short-description">Amenities:{{data()?.amenities}}</p>
+    <p>Type:{{data()?.room_type}}</p>
+    <p class="ratings">Ratings  : 4.5</p>
+    <button (click)="more()">...more</button>
+</div>
+</div>

@@ -1,0 +1,138 @@
+<div class="signup-form">
+    <div>
+     <div class="pic"></div>
+     <div class="form">
+         <h2>Signup to book</h2>
+         <form #myForm="ngForm"  (ngSubmit)="onSubmit(myForm)"  >
+            <div> 
+                <div class="form-group">
+                    <label for="firstname">firstname :</label>
+                    <input type="text" id="firstname" name="firstname"
+                    [class.holderError]="firstname.touched && firstname.invalid"
+                    [class.ng-invalid]="firstname.touched && firstname.invalid"
+                    pattern="[A-Za-z]{3,20}"  
+                    ngModel 
+                    #firstname="ngModel"  
+                    placeholder="First name" required >
+                   
+                </div>
+                @if(firstname.invalid && (firstname.dirty || firstname.touched)){
+                    <div class="alert">
+                        <p *ngIf="firstname.hasError('required')" >
+                            firstname is required
+                        </p>
+                        <p *ngIf="firstname.hasError('pattern')" >
+                            only valid firstname can be entered
+                        </p>
+                    </div>
+                }
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label for="lastname">lastname :</label>
+                    <input type="text" id="lastname" name="lastname"
+                    [class.holderError]="lastname.touched && lastname.invalid"
+                    [class.ng-invalid]="lastname.touched && lastname.invalid"
+                    pattern="[A-Za-z]{2,20}"  
+                    ngModel 
+                    #lastname="ngModel"  
+                    placeholder="Last name" required >
+                   
+                </div>
+                @if(lastname.invalid && (lastname.dirty || lastname.touched)){
+                    <div class="alert">
+                        <p *ngIf="lastname.hasError('required')" >
+                            lastname is required
+                        </p>
+                        <p *ngIf="lastname.hasError('pattern')" >
+                            only valid lastname can be entered
+                        </p>
+                    </div>
+                }
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label for="phone">phone :</label>
+                    <input type="text" id="phone" name="phone"
+                    [class.holderError]="phone.touched && phone.invalid"
+                    [class.ng-invalid]="phone.touched && phone.invalid"
+                    pattern="([^1-9]([0-9]{2}))\s([0-9]{3})\s([0-9]{4})|([^1-9]([0-9]{2}))-([0-9]{3})-([0-9]{4})"  
+                    ngModel 
+                    #phone="ngModel"  
+                    placeholder="012 345 6789 or 012-345-6789" required>
+                   
+                </div>
+                @if(phone.invalid && (phone.dirty || phone.touched)){
+                    <div class="alert">
+                        <p *ngIf="phone.hasError('required')" >
+                            phone is required
+                        </p>
+                        <p *ngIf="phone.hasError('pattern')" >
+                            only valid phone can be entered
+                        </p>
+                    </div>
+                }
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email"
+                    [class.holderError]="email.touched && email.invalid"
+                    [class.ng-invalid]="email.touched && email.invalid"
+                    pattern="[\w\.]+@([\w]+\.)+[\w]{2,4}"  
+                    ngModel 
+                    #email="ngModel"  
+                    placeholder="example@domain.com" required email>
+                   
+                </div>
+                @if(email.invalid && (email.dirty || email.touched)){
+                    <div class="alert">
+                        <p *ngIf="email.hasError('required')" >
+                            email is required
+                        </p>
+                        <p *ngIf="email.hasError('pattern')" >
+                            only valid email can be entered
+                        </p>
+                    </div>
+                }
+            </div>
+ 
+           <div>
+            <div class="form-group"> 
+                <label for="password">Password :</label>
+                <input type="password" id="password" name="password"  
+                [class.holderError]="password.touched && password.invalid"  
+                [class.ng-invalid]="password.touched && password.invalid"
+                ngModel minlength="3"
+                #password="ngModel" placeholder="Password"  required>
+                
+            </div>
+            @if(password.invalid && (password.dirty || password.touched)){
+                <div class="alert">
+                    <p *ngIf="password.hasError('required')" >
+                        Password is required.
+                    </p>
+                    <p *ngIf="password.hasError('minlength')" >
+                        Password must be atleast 3 characters long or more.
+                    </p>
+                </div>
+            }
+           </div>
+             <div class="btnSubmit">
+                 <input [disabled]="!myForm.control.valid"  type="submit" id="submit" value="signup">
+             </div>
+             <br>
+             <p>or</p>
+             <div>
+                 login with google
+             </div>
+             
+         </form>
+     </div>
+    </div>
+     
+ </div>
+ 

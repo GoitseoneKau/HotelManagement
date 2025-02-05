@@ -1,0 +1,24 @@
+<div class="hotel-list">
+    <div class="type-filter">type of rooms:
+      <label for="room-type">
+        <select title="room-type" name="room-type">
+            <option value="luxury" selected>Luxury</option>
+            <option value="penthouse">penthouse</option>
+            <option value="executive">executive</option>
+            <option value="lodge">lodge</option>
+            <option value="villa">villa</option>
+            <option value="doubleroom">doubleroom</option>
+            <option value="standardroom">standardroom</option>
+        </select>
+      </label>
+    </div>
+    <div class="hotel-rooms ">
+    
+        @for(room of rooms;track room.id!){
+          <hotel-card [data]="room" (gotoMoreDetails)="moreDetails(room.id!)" />
+        }
+          
+        
+        
+    </div>
+</div>

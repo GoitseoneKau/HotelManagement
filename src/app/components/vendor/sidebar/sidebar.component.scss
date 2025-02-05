@@ -1,0 +1,38 @@
+.sidebar{
+    height: 100%;
+}
+
+.sidebar>ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+
+   
+
+.sidebar>ul>li>a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    width: 100%;
+    line-height: 1.5rem;
+    padding: 15px 25px;
+    color:black;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.sidebar>ul>li>a:hover,.sidebar>ul>li:hover{
+    color: rgb(212, 129, 28);
+    background-color: rgb(255, 255, 255);
+}
+
+
+.sidebar>ul>li>a>*:last-child:not(.material-symbols-outlined){
+    width: 24px;
+    height: 24px;
+    font-size: 1.2em;
+    text-align: center;
+}

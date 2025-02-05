@@ -1,0 +1,52 @@
+.hotel-details{
+    height: 100%;
+    position: relative;
+    display:flex;
+    gap:1em;
+}
+
+.hotel-details{
+    .bookings{
+        width: 20%;
+        height: 100%;
+    }
+    .room{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: flex-start;
+        gap:1em;
+
+
+        div{
+            width:100%;
+            text-align: center;
+        }
+
+        .btnBookNow{
+            padding: 10px 15px;
+            border: 2px rgba(139, 69, 19, 0) solid;
+            background-color: rgb(226, 160, 80);
+        }
+
+       
+        
+        .btnBookNow:hover{
+            background-color: black;
+            color:rgb(235, 191, 138)
+        }
+        
+        .btnBookNow:active{
+            border:2px groove rgb(233, 195, 149);
+            background-color: rgb(255, 255, 255);
+            color:rgb(226, 160, 80)
+        }
+    }
+}
+
+.room h1{
+    font-size: 3em;
+}

@@ -1,0 +1,20 @@
+<div class="header">
+    <div class="logo">logo</div>
+
+    
+        <ul  class="header-links" *ngIf="role()!=='admin'" >
+            @if(displayname()){
+                <li><a Link="profile" title="profile"><p>{{displayname()}}</p><i class="fa fa-user-circle fa-xl" aria-hidden="true"></i></a></li>
+            }
+           
+           @if(!loggedIn()){
+            <li><a (click)="goToLogin()" title="login">
+            
+                login</a></li>
+            <li><a (click)="goToSignup()" title="signup">signup</a></li>
+           }
+           @if(loggedIn()){
+            <li><a (click)="logout()" title="logout">Logout</a></li>
+           }
+        </ul>
+</div>
